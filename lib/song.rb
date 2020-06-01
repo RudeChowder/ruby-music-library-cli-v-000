@@ -9,7 +9,9 @@ class Song
 
     def initialize(name, artist = nil)
         @name = name
-        self.artist = artist
+        if artist != nil
+            self.artist = artist
+        end
     end
 
     def save
@@ -17,8 +19,8 @@ class Song
     end
 
     def artist=(artist)
-        binding.pry
-        artist.add_song(self)    
+        @artist = artist
+        artist.add_song(self)
     end
 
     def self.all
