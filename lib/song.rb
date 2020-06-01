@@ -4,13 +4,16 @@ require 'pry'
 class Song
     # extend Concerns::Storage::ClassMethods
     # include Concerns::Storage::InstanceMethods
-    attr_accessor :name, :artist
+    attr_accessor :name, :artist, :genre
     @@all = []
 
-    def initialize(name, artist = nil)
+    def initialize(name, artist = nil, genre = nil)
         @name = name
         if artist != nil
             self.artist = artist
+        end
+        if genre != nil
+            self.genre = genre
         end
     end
 
@@ -21,6 +24,11 @@ class Song
     def artist=(artist)
         @artist = artist
         artist.add_song(self)
+    end
+
+    def genre=(genre)
+        @genre = genre
+        genre.add_song(self)
     end
 
     def self.all

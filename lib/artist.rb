@@ -41,4 +41,12 @@ class Artist
        @songs
     end
 
+    def genres
+        collection = songs.collect do |song|
+            if song.artist == self
+                song.genre
+            end
+        end
+        collection.uniq
+    end
 end
